@@ -1,27 +1,27 @@
 # Configure-Sonoff-mini-DIY-mode-using-mac
 Configure your Sonoff mini DIY using a Apple mac
 
-In deze tutorial gaan we een Sonoff aansluiten in DIY mode zodat de hele zooi niet via China gaat
-Sluit je Sonoff aan via het volgende wiring diagram.
+in this small tutorial we will install a Sonoff in DIY mode so we do not use the china servers.
+Connect your sonoff using the following diagram
 
 ![Sonoff-MINI-Wiring-Diagram](Sonoff-MINI-Wiring-Diagram.jpg)
 
-Plug de Sonoff switch via een stekker in het stopcontact richting een lamp, komt er ongeveer zo uit te zien.
+Plugin the Sonoff switch with as an example a light to it, it looks simmilar to the following.
 
 ![Sonoff-wired](Sonoff-wired.png)
 
-Verbind je Apple Macbook nu met een kabel, Ga naar internet sharing en share je Ethernet richting Wifi en maak een ssid aan met de volgende gegevens
+Please connect your apple macbook to the internet by cable, go to internet sharing and share your Ethernet over Wifi. Create a wifi network as following:
 
 ```
 WiFi SSID: sonoffDiy
 password: 20170618sn
 ```
-Open als je bent verbonden je Discovery (voormalig Bonjour) en check hierin iets wat op eWelink lijkt
+After you are connected use the Discovery browser (before bonjour browser) and check something that looks like eWelink
 
 ![Sonoff-Discovery](Sonoff-Discovery.png)
 
 
-Of voer in je terminal in: 
+Or insert the following at your terminal:
 ```
 <Computername>:~ ><Username>$ dns-sd -B _ewelink._tcp
 
@@ -34,16 +34,15 @@ Timestamp     A/R    Flags  if Domain               Service Type         Instanc
  9:36:38.998  Add        2  14 local.               _ewelink._tcp.       eWeLink_1000axxxxx
 ```
 
-Alle gegevens die je nodig heb:
+All of the details you need:
 ```
 device1 - 1000axxxxx - 192.168.0.1
 device2 - 1000axxxxx - 192.168.0.2
 ```
 
-
-gebruik dan het volgende commando om de boel te testen als je nog verbonden bent met je eigen gemaakte netwerk
+Then use the following command in your terminal to test if everything works as expected in your test wifi network:
 ```
-#lamp aan/uit
+#light on/off
 
 on
 curl -XPOST "http://<Ip-add>:8081/zeroconf/switch" -d '{"deviceid":"1000axxxxx","data":{"switch":"on"}}'
@@ -52,16 +51,16 @@ off
 curl -XPOST "http://<Ip-add>:8081/zeroconf/switch" -d '{"deviceid":"1000axxxxx","data":{"switch":"off"}}'
 ```
 
-wijzig het SSID met het volgende commando
+You can add the Sonoff Mini to your existing network by using the following command:
 
 ```
 curl -XPOST "http://<Ip-add>:8081/zeroconf/wifi" -d '{"deviceid":"1000axxxxx","data":{"ssid": "<Wifi network name>","password": "<Wifi Password>"}}'
 ```
 
-Test na dit commando via het netwerk of je nu de lamp in gebruik kan nemen
-Het kan even duren voordat hij in discovery verschijnt, check eventueel het IP in je Router/Firewall met de naam ESP_8xxxxx
+Now test your Sonoff Mini after you connect it to your own home network. In my case it took some time before it appeared in Discovery. Eventually check your IP in your Router/Firewall with the name ESP_8xxxxx
+
 ```
-#lamp aan/uit
+#light on/off
 
 on
 curl -XPOST "http://<Ip-add>:8081/zeroconf/switch" -d '{"deviceid":"1000axxxxx","data":{"switch":"on"}}'
@@ -69,3 +68,5 @@ curl -XPOST "http://<Ip-add>:8081/zeroconf/switch" -d '{"deviceid":"1000axxxxx",
 off
 curl -XPOST "http://<Ip-add>:8081/zeroconf/switch" -d '{"deviceid":"1000axxxxx","data":{"switch":"off"}}'
 ```
+
+Now you can use some python scripts to talk to your light or implement it in homebridge
