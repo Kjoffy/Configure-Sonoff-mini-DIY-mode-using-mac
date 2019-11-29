@@ -69,5 +69,6 @@ off
 curl -XPOST "http://<Ip-add>:8081/zeroconf/switch" -d '{"deviceid":"1000axxxxx","data":{"switch":"off"}}'
 ```
 
-From now on you can implement your Sonoff-MINI switch in your homebridge, I attached it in the attached file: config.json
-If you want yo implement it within Python you can check the config in the attached file: Sonoff-Mini-PY
+From here you can implement your Sonoff-MINI switch in your homebridge, I attached the default config in the file: config.json
+
+If you want to implement it within Python you can check the config in the attached file: Sonoff-Mini-PY
