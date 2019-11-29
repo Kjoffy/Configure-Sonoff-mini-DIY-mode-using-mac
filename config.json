@@ -1,0 +1,18 @@
+{
+    "bridge": {    
+	"name": "Homebridge",
+    	"username": "<Mac Address>",
+    	"port": 51826,
+    	"pin": "055-55-155"
+  },
+
+      "accessories": [
+        {
+            "accessory": "Sonoff",
+            "name": "Sonoff Mini DIY",
+            "uri": "http://<IP-Address>:8081",
+            "id": "<Device ID>",
+            "debug": false
+        }
+    ]
+}
