@@ -36,8 +36,8 @@ Timestamp     A/R    Flags  if Domain               Service Type         Instanc
 
 All of the details you need:
 ```
-device1 - 1000axxxxx - 192.168.0.1
-device2 - 1000axxxxx - 192.168.0.2
+device1 - 1000axxxxx - 192.168.2.2 <connected to the DIY wifi>
+device2 - 1000axxxxx - 192.168.0.105 <Connected to my network>
 ```
 
 Then use the following command in your terminal to test if everything works as expected in your test wifi network:
