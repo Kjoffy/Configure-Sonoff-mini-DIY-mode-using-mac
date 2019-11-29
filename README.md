@@ -57,7 +57,7 @@ You can add the Sonoff Mini to your existing network by using the following comm
 curl -XPOST "http://<Ip-add>:8081/zeroconf/wifi" -d '{"deviceid":"1000axxxxx","data":{"ssid": "<Wifi network name>","password": "<Wifi Password>"}}'
 ```
 
-Now test your Sonoff Mini after you connect it to your own home network. In my case it took some time before it appeared in Discovery. Eventually check your IP in your Router/Firewall with the name ESP_8xxxxx
+Now test your Sonoff Mini after you connect it to your own home network. In my case it took some time before it appeared in Discovery. Possibly check your IP in your Router/Firewall with the name ESP_8xxxxx
 
 ```
 #light on/off
@@ -69,4 +69,4 @@ off
 curl -XPOST "http://<Ip-add>:8081/zeroconf/switch" -d '{"deviceid":"1000axxxxx","data":{"switch":"off"}}'
 ```
 
-Now you can use some python scripts to talk to your light or implement it in homebridge
+Now you can use some python scripts to talk to your light or implement it in Apple's Homekit / homebridge
